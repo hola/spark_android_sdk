@@ -6,10 +6,9 @@ import android.view.View;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.Player;
 import com.holaspark.holaplayer.HolaPlayer;
-import com.holaspark.holaplayer.HolaPlayerAPI;
 import com.holaspark.holaplayer.PlayItem;
 import com.holaspark.holaplayer.PlayListItem;
-import com.holaspark.holaplayer.internal.Const;
+import com.holaspark.holaplayer.Const;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +17,6 @@ import java.util.List;
 public class MainDemo extends Activity {
 private HolaPlayer m_hola_player = null;
 private SampleListener m_listener;
-private List<PlayListItem> m_playlist;
 private String m_video_url;
 private String m_poster_url;
 @Override
@@ -31,8 +29,8 @@ protected void onCreate(Bundle saved_state){
     m_hola_player = findViewById(R.id.float_player);
     m_hola_player.set_customer(getIntent().getStringExtra("customer_id"));
     m_listener = new SampleListener();
-    m_hola_player.add_listener(m_listener);
-    Log.d(MainActivity.TAG, "Hola Player main demo");
+    m_hola_player.addListener(m_listener);
+    Log.d(MainActivity.TAG, "Spark Player main demo");
     init();
 }
 @Override
@@ -49,7 +47,7 @@ protected void onPause(){
 }
 @Override
 protected void onDestroy(){
-    m_hola_player.remove_listener(m_listener);
+    m_hola_player.removeListener(m_listener);
     if (m_hola_player!=null)
         m_hola_player.uninit();
     super.onDestroy();
@@ -64,8 +62,8 @@ public void init(){
     try
     {
         JSONArray json = new JSONArray(playlist_json);
-        m_playlist = new LinkedList<>();
-        for (int i = 0; i<json.length() && m_playlist.size()<4; i++)
+        List<PlayListItem> playlist = new LinkedList<>();
+        for (int i = 0; i<json.length() && playlist.size()<4; i++)
         {
             Log.d(Const.TAG, json.getJSONObject(i).toString());
             JSONObject row = json.getJSONObject(i)
@@ -85,26 +83,19 @@ public void init(){
             String url = row.getString("url");
             if (url.equals(m_video_url))
                 continue;
-            m_playlist.add(new PlayListItem(url, poster, desc));
+            playlist.add(new PlayListItem(url, poster, desc));
         }
-        if (m_playlist.size()<1)
+        if (playlist.size()<1)
             return;
-        PlayListItem[] items = m_playlist.toArray(new PlayListItem[m_playlist.size()]);
+        PlayListItem[] items = playlist.toArray(new PlayListItem[playlist.size()]);
         m_hola_player.set_watch_next_items(items);
     } catch(JSONException e){
         Log.d(MainActivity.TAG, "JSON exception "+e); }
 }
-class SampleListener extends HolaPlayerAPI.DefaultEventListener {
+class SampleListener extends Player.DefaultEventListener {
     @Override
-    public void on_play(){
-        Log.d(MainActivity.TAG, "play");
-    }
-    @Override
-    public void on_pause(){
-        Log.d(MainActivity.TAG, "pause");
-    }
-    @Override
-    public void on_state_changed(int playback_state){
+    public void onPlayerStateChanged(boolean play, int playback_state){
+        Log.d(MainActivity.TAG, play ? "play" : "pause");
         String state = playback_state==Player.STATE_IDLE ? "IDLE" :
             playback_state==Player.STATE_BUFFERING ? "BUFFERING" :
             playback_state==Player.STATE_READY ? "READY" :
@@ -112,28 +103,16 @@ class SampleListener extends HolaPlayerAPI.DefaultEventListener {
         Log.d(MainActivity.TAG, "state: "+state);
     }
     @Override
-    public void on_seeked(){
+    public void onSeekProcessed(){
         Log.d(MainActivity.TAG, "seeked");
     }
     @Override
-    public void on_error(ExoPlaybackException error){
+    public void onPlayerError(ExoPlaybackException error){
         Log.e(MainActivity.TAG, "error: ", error);
     }
     @Override
-    public void on_loading_changed(boolean is_loading){
+    public void onLoadingChanged(boolean is_loading){
         Log.d(MainActivity.TAG, "loading: "+is_loading);
-    }
-    @Override
-    public void on_ad_start(){
-        Log.d(MainActivity.TAG, "ad_start");
-    }
-    @Override
-    public void on_ad_end(){
-        Log.d(MainActivity.TAG, "ad_end");
-    }
-    @Override
-    public void on_fullscreen_changed(boolean is_fullscreen){
-        Log.d(MainActivity.TAG, "fullscreen: "+is_fullscreen);
     }
 }
 }
