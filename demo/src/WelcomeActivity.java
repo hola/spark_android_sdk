@@ -1,4 +1,4 @@
-package com.holaspark.holaplayerdemo;
+package com.spark.demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,8 +41,9 @@ public void onClick(View v){
         }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error){
-            m_check_customer_result.setText(error.networkResponse.statusCode==403 ?
-                "Error: no such customerID" : "Error: "+error.networkResponse.statusCode);
+            m_check_customer_result.setText(error.networkResponse!=null &&
+                error.networkResponse.statusCode==403 ? "Error: no such customerID" :
+                "Error: "+error.toString());
         }
     });
     m_check_customer_result.setText(R.string.loading);

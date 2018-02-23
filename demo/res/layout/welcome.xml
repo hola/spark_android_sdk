@@ -35,4 +35,3 @@
         android:layout_gravity="center" android:layout_marginBottom="20dp" android:textSize="14sp"
         android:textColor="@color/black" android:text="@string/requires_account" />
 </LinearLayout>
-

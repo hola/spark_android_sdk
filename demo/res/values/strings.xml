@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Spark Demo App</string>
     <string name="demo_app">Demo App</string>
-    <string name="welcome">Welcome to Hola Spark SDK demo app!</string>
+    <string name="welcome">Welcome to Spark SDK demo app!</string>
     <string name="enter_customer_id">Please enter your customerID:</string>
     <string name="start">Start</string>
-    <string name="requires_account">This app requires an active Hola Spark account.</string>
+    <string name="requires_account">This app requires an active Spark account.</string>
     <string name="demo_customer">sparkdemo</string>
     <string name="loading">Processing…</string>
     <string name="ad_tag"><![CDATA[https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=]]>

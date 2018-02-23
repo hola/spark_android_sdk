@@ -1,4 +1,4 @@
-package com.holaspark.holaplayerdemo;
+package com.spark.demo;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
@@ -34,7 +34,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class MainActivity extends ListActivity {
-static final String TAG = "HolaPlayerDemo";
+static final String TAG = "SparkPlayerDemo";
 private String m_customer_id;
 private ArrayList<Article> m_articles;
 private ImageLoader m_image_loader;

@@ -1,21 +1,21 @@
-package com.holaspark.holaplayerdemo;
+package com.spark.demo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.Player;
-import com.holaspark.holaplayer.HolaPlayer;
-import com.holaspark.holaplayer.PlayItem;
-import com.holaspark.holaplayer.PlayListItem;
-import com.holaspark.holaplayer.Const;
+import com.spark.player.SparkPlayer;
+import com.spark.player.PlayItem;
+import com.spark.player.PlayListItem;
+import com.spark.player.Const;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.LinkedList;
 import java.util.List;
 public class MainDemo extends Activity {
-private HolaPlayer m_hola_player = null;
+private SparkPlayer m_spark_player = null;
 private SampleListener m_listener;
 private String m_video_url;
 private String m_poster_url;
@@ -26,36 +26,36 @@ protected void onCreate(Bundle saved_state){
     setContentView(R.layout.main_demo);
     m_video_url = getIntent().getStringExtra("video_url");
     m_poster_url= getIntent().getStringExtra("poster_url");
-    m_hola_player = findViewById(R.id.float_player);
-    m_hola_player.set_customer(getIntent().getStringExtra("customer_id"));
+    m_spark_player = findViewById(R.id.float_player);
+    m_spark_player.set_customer(getIntent().getStringExtra("customer_id"));
     m_listener = new SampleListener();
-    m_hola_player.addListener(m_listener);
+    m_spark_player.addListener(m_listener);
     Log.d(MainActivity.TAG, "Spark Player main demo");
     init();
 }
 @Override
 protected void onResume(){
     super.onResume();
-    m_hola_player.setVisibility(View.VISIBLE);
-    m_hola_player.play();
+    m_spark_player.setVisibility(View.VISIBLE);
+    m_spark_player.play();
 }
 @Override
 protected void onPause(){
     super.onPause();
-    m_hola_player.pause();
-    m_hola_player.setVisibility(View.GONE);
+    m_spark_player.pause();
+    m_spark_player.setVisibility(View.GONE);
 }
 @Override
 protected void onDestroy(){
-    m_hola_player.removeListener(m_listener);
-    if (m_hola_player!=null)
-        m_hola_player.uninit();
+    m_spark_player.removeListener(m_listener);
+    if (m_spark_player!=null)
+        m_spark_player.uninit();
     super.onDestroy();
 }
 public void init(){
     final boolean vr = m_video_url.equals(getString(R.string.video_url_hls_vr));
-    m_hola_player.vr_mode(vr);
-    m_hola_player.queue(new PlayItem(vr ? null : getString(R.string.ad_tag),
+    m_spark_player.vr_mode(vr);
+    m_spark_player.queue(new PlayItem(vr ? null : getString(R.string.ad_tag),
         m_video_url, m_poster_url));
     // XXX andrey: properly request watch_next items
     String playlist_json = getIntent().getStringExtra("playlist_json");
@@ -88,7 +88,7 @@ public void init(){
         if (playlist.size()<1)
             return;
         PlayListItem[] items = playlist.toArray(new PlayListItem[playlist.size()]);
-        m_hola_player.set_watch_next_items(items);
+        m_spark_player.set_watch_next_items(items);
     } catch(JSONException e){
         Log.d(MainActivity.TAG, "JSON exception "+e); }
 }
