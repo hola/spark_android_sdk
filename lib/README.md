@@ -1,6 +1,6 @@
 # Spark Feature Library
 
-The Spark feature library is a toolset for enriching and enhancing the user exeprience of your native apps with features like Video previews, floating player, watch next suggestions, AirPlay, Google casting and much more
+The Spark feature library is a toolset for enriching and enhancing the user exeprience of your native apps with features like Video previews, floating player, watch next suggestions, AirPlay and Google casting and much more
 
 The library includes:
 - Full [Spark feature set](https://holaspark.com) 
