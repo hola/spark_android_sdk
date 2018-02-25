@@ -4,18 +4,10 @@ This document describes integration of a native Android app with Spark player an
 
 The SDK has two parts
 
-## Spark Player
-a full featured player based on Android ExoPlayer that can be integrated as is without requiring a Spark customer id.
-It includes the following feature set:
-- Ad support using [Google IMA module](https://developers.google.com/interactive-media-ads/docs/sdks/android/compatibility)
-- 360 video playback with gesture and gyro control
-- Customized high quality controls
+- [Spark Player](https://github.com/hola/spark_android_sdk/blob/master/player):
+  A full featured player based on Android ExoPlayer that can be integrated as is without requiring a Spark customer id.
 
-**Requirements**
-- Android version 4.4 and above
-
-## Spark feature library
-
+- [Spark feature library](https://github.com/hola/spark_android_sdk/blob/master/lib):
 The Spark feature library is a rich toolset for enriching and enhancing the user exeprience of your native apps with features like Video previews, floating player, watch next suggestions, etc - see the [Full available feature set](https://holaspark.com) 
 
 The library also includes:
