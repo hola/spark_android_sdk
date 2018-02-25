@@ -15,7 +15,7 @@ The library includes all the Spark [available features](https://holaspark.com) a
 
 **Android version 4.4 and above is required.**
 
-Note: An [iOS version](https://github.com/hola/ios_android_sdk) is also available.
+Note: An [iOS version](https://github.com/hola/spark_ios_sdk) is also available.
 
 # Basic integration
 
