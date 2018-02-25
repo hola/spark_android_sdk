@@ -6,7 +6,7 @@ Spark player is provided with full sources and can be integrated as is without r
 With the following feature set:
 - Ad support using [Google IMA module](https://developers.google.com/interactive-media-ads/docs/sdks/android/compatibility)
 - 360 video playback with gesture and gyro control
-- Customized controls with quality level control menu
+- Customized high quality controls
 
 Using Spark feature library requires registering with [Spark](https://holaspark.com) and receiving a customer id.
 The library includes all the Spark [available features](https://holaspark.com) and also
