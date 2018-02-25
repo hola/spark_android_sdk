@@ -5,7 +5,8 @@ The Spark feature library is a toolset for enriching and enhancing the user exep
 The library includes:
 - Full [Spark feature set](https://holaspark.com) 
 - VPAID addon 
-- [External APIs](https://docs.google.com/document/d/1Rh8TWTDyBdkLnnr4RVnRNZ1bSltT5NIn5dcNpdxxdQE/edit#heading=h.uo3s9j23kuim) for control & customization of all features
+- Control Panel configuration of all features
+- [External APIs](https://docs.google.com/document/d/1Rh8TWTDyBdkLnnr4RVnRNZ1bSltT5NIn5dcNpdxxdQE/edit#heading=h.uo3s9j23kuim) for manual feature control
 
 **Requirements**
 - Registering with [Spark](https://holaspark.com) to receive a customer id that will be used to activate the library
