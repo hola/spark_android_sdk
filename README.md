@@ -17,9 +17,6 @@ The library includes all the Spark [available features](https://holaspark.com) a
 
 Note: An [iOS version](https://github.com/hola/spark_ios_sdk) is also available.
 
-# Basic integration
-
-**under work**
 
 If you have any questions, email us at support@holaspark.com
 
