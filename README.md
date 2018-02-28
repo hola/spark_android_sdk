@@ -33,7 +33,7 @@ Add Spark Player to a layout file with required set of features and options:
         app:position_memory="false"/>
 </LinearLayout>
 ```
-By default, all Spark features for a &lt;customer_id&gt; are enabled. However, one can disable some features by providing "false" attribute to SparkPlayer layout record.
+By default, Spark features for a &lt;customer_id&gt; are enabled according to what was configured in the Spark control panel. However, one can disable some features for a specific instance by providing "false" attribute to SparkPlayer layout record.
 
 ### Step 2
 
