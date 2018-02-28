@@ -1,6 +1,6 @@
 # Spark Android SDK
 
-##Introduction
+## Introduction
 
 This document describes integration of a native Android app with Spark Player and feature library.
 
@@ -14,11 +14,11 @@ The Spark feature library is a toolset for enriching and enhancing the user exep
 
 Try out the complete feature set in our [Spark Player and Feature Library demo app](https://play.google.com/store/apps/details?id=com.holaspark.holaplayerdemo)
 
-##Basic integration
+## Basic integration
 
 Integration of Spark Player with an app, can be done in two easy steps:
 
-###Step 1
+### Step 1
 
 Add Spark Player to a layout file with required set of features and options:
 
@@ -35,7 +35,7 @@ Add Spark Player to a layout file with required set of features and options:
 ```
 By default, all Spark features for a &lt;customer_id&gt; are enabled. However, one can disable some features by providing "false" attribute to SparkPlayer layout record.
 
-###Step 2
+### Step 2
 
 onCreate an activity of your app find Spark Player view, set customer id and queue an item:
 
