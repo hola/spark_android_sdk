@@ -14,6 +14,8 @@ The Spark feature library is a toolset for enriching and enhancing the user exep
 
 Try out the complete feature set in our [Spark Player and Feature Library demo app](https://play.google.com/store/apps/details?id=com.holaspark.holaplayerdemo)
 
+You can also refer to the APP section of our [Spark API doc](https://docs.google.com/document/d/1Rh8TWTDyBdkLnnr4RVnRNZ1bSltT5NIn5dcNpdxxdQE/edit#heading=h.uo3s9j23kuim) for more information.
+
 ## Basic integration
 
 Integration of Spark Player with an app, can be done in two easy steps:
