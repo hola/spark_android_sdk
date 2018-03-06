@@ -6,6 +6,7 @@ The player includes the following feature set:
 - Ad support using [Google IMA module](https://developers.google.com/interactive-media-ads/docs/sdks/android/compatibility)
 - 360 video playback with gesture and gyro control
 - Customized high quality controls
+- Generic player [stats and events API](http://google.github.io/ExoPlayer/doc/reference/com/google/android/exoplayer2/Player.html)
 
 **Requirements**
 - Android version 4.4 and above
