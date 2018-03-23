@@ -2,48 +2,62 @@ package com.spark.demo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.util.Util;
 import com.spark.player.SparkPlayer;
 import com.spark.player.PlayItem;
-import com.spark.player.PlayListItem;
-import com.spark.player.Const;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.LinkedList;
-import java.util.List;
+
 public class MainDemo extends Activity {
 private SparkPlayer m_spark_player = null;
 private SampleListener m_listener;
 private String m_video_url;
 private String m_poster_url;
+private boolean m_playing = true;
 @Override
 protected void onCreate(Bundle saved_state){
-    // XXX pavelki: restore saved state onCreate
     super.onCreate(saved_state);
     setContentView(R.layout.main_demo);
     m_video_url = getIntent().getStringExtra("video_url");
     m_poster_url= getIntent().getStringExtra("poster_url");
     m_spark_player = findViewById(R.id.float_player);
-    m_spark_player.set_customer(getIntent().getStringExtra("customer_id"));
     m_listener = new SampleListener();
     m_spark_player.addListener(m_listener);
     Log.d(MainActivity.TAG, "Spark Player main demo");
     init();
 }
 @Override
+protected void onStart(){
+    super.onStart();
+    if (Util.SDK_INT > 23)
+        start();
+}
+@Override
 protected void onResume(){
     super.onResume();
-    m_spark_player.setVisibility(View.VISIBLE);
-    m_spark_player.play();
+    if (Util.SDK_INT <= 23)
+        start();
 }
 @Override
 protected void onPause(){
     super.onPause();
-    m_spark_player.pause();
-    m_spark_player.setVisibility(View.GONE);
+    if (Util.SDK_INT <= 23)
+        stop();
+}
+@Override
+protected void onStop(){
+    super.onStop();
+    if (Util.SDK_INT > 23)
+        stop();
+}
+private void stop(){
+    m_playing = m_spark_player.getPlayWhenReady();
+    m_spark_player.setPlayWhenReady(false);
+    m_spark_player.onPause();
+}
+private void start(){
+    m_spark_player.onResume();
+    m_spark_player.setPlayWhenReady(m_playing);
 }
 @Override
 protected void onDestroy(){
@@ -57,40 +71,6 @@ public void init(){
     m_spark_player.vr_mode(vr);
     m_spark_player.queue(new PlayItem(vr ? null : getString(R.string.ad_tag),
         m_video_url, m_poster_url));
-    // XXX andrey: properly request watch_next items
-    String playlist_json = getIntent().getStringExtra("playlist_json");
-    try
-    {
-        JSONArray json = new JSONArray(playlist_json);
-        List<PlayListItem> playlist = new LinkedList<>();
-        for (int i = 0; i<json.length() && playlist.size()<4; i++)
-        {
-            Log.d(Const.TAG, json.getJSONObject(i).toString());
-            JSONObject row = json.getJSONObject(i)
-                .getJSONObject("video_info");
-            Log.d(MainActivity.TAG, "row "+row);
-            String desc = "N/A", poster = "";
-            if (row.has("description"))
-                desc = row.getString("description");
-            else if (row.has("title"))
-                desc = row.getString("title");
-            if (row.has("poster"))
-                poster = row.getString("poster");
-            else if (row.has("video_poster"))
-                poster = row.getString("video_poster");
-            if (!row.has("url"))
-                continue;
-            String url = row.getString("url");
-            if (url.equals(m_video_url))
-                continue;
-            playlist.add(new PlayListItem(url, poster, desc));
-        }
-        if (playlist.size()<1)
-            return;
-        PlayListItem[] items = playlist.toArray(new PlayListItem[playlist.size()]);
-        m_spark_player.set_watch_next_items(items);
-    } catch(JSONException e){
-        Log.d(MainActivity.TAG, "JSON exception "+e); }
 }
 class SampleListener extends Player.DefaultEventListener {
     @Override

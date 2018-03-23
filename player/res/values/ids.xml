@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spark_player_content" type="id" />
+    <item name="spark_player_controlbar" type="id" />
+    <item name="spark_player_menu_button" type="id" />
+    <item name="spark_ad_overlay" type="id" />
+    <item name="spark_speed_menu" type="id" />
+    <item name="spark_quality_menu" type="id" />
+    <item name="powered_by_spark" type="id" />
+    <item name="spark_player_360view" type="id" />
+</resources>

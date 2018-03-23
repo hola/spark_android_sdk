@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Spark Player</string>
+    <string name="menu_description">Menu</string>
+    <string name="quality">Quality</string>
+    <string name="playback_speed">Playback speed</string>
+    <string name="normal">Normal</string>
+    <string name="auto">Auto</string>
+    <string name="live">LIVE</string>
+    <string name="powered_by">Spark Player</string>
+</resources>

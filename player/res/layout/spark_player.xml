@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.spark.player.internal.VideoFrameLayout
+        android:id="@id/spark_player_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_gravity="center">
+    </com.spark.player.internal.VideoFrameLayout>
+    <FrameLayout android:id="@id/spark_ad_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.android.volley.toolbox.NetworkImageView android:id="@+id/poster_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+    <FrameLayout android:id="@+id/ff_thumb_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/black">
+        <ImageView android:id="@+id/ff_thumb_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"/>
+    </FrameLayout>
+    <com.spark.player.internal.PlayerControlView
+        android:id="@id/spark_player_controlbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:controller_layout_id="@layout/spark_player_controlbar"/>
+    <ProgressBar android:id="@+id/spark_loading_progress"
+        android:theme="@style/SparkCircularProgress"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+</merge>

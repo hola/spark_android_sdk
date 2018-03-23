@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/pinned_mode" android:title="Pinned to top mode"/>
+    <item android:id="@+id/in_text_mode" android:title="Regular mode"/>
+</menu>

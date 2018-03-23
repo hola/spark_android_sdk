@@ -1,0 +1,14 @@
+<resources>
+    <declare-styleable name="SparkPlayer">
+        <attr name="float_mode" format="boolean"/>
+        <attr name="vr_mode" format="boolean"/>
+        <attr name="position_memory" format="boolean"/>
+        <attr name="float_close_on_touch" format="boolean"/>
+        <attr name="thumbnails" format="boolean"/>
+        <attr name="full_frame_thumbnails" format="boolean"/>
+        <attr name="watch_next" format="boolean"/>
+        <attr name="customer" format="string"/>
+        <attr name="bottom_settings_menu" format="boolean"/>
+        <attr name="auto_fullscreen" format="boolean"/>
+    </declare-styleable>
+</resources>

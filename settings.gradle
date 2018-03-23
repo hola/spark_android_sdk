@@ -1,2 +1,1 @@
-include ':player', ':demo'
-
+include ':player', ':lib', ':demo'
