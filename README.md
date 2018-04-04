@@ -1,3 +1,5 @@
+This repository is moved to: https://github.com/spark-mv/android_sdk
+
 # Spark Android SDK
 
 ## Introduction
